@@ -16,6 +16,8 @@
     "pm2": "^2.4.6"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jade": "^1.11.0",
     "mongoose": "^4.10.2"
   }
 }

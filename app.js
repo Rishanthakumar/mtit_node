@@ -3,11 +3,22 @@ var app = express();
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var path = require('path');
 
 require('./index.js')();
 
 app.use(cookieParser());
 app.use(session({secret: 'secretcode'}));
+
+// views will be find in the views folder
+app.set('views', path.join(__dirname, 'views'));
+// using jade as template engine
+app.set('view engine', 'jade');
+// use the public folder as the container for static files like css, image
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+// ---------------------------- Routes ------------------------------------
 
 app.get('/year1', function (req, res) {
 
@@ -54,5 +65,10 @@ app.get('/year3', function (req, res) {
     req.session.lastpage = '/year3';
     res.send(responseText);
 });
+
+app.get('/add', function (req, res) {
+    res.render('additem');
+});
+
 
 app.listen(3000);

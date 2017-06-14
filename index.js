@@ -9,7 +9,7 @@ module.exports = function() {
             host: 'localhost',
             user: 'root',
             password: '',
-            database: 'supplierclient'
+            database: 'Node'
         });
 
         return connection;
@@ -26,7 +26,7 @@ module.exports = function() {
 
     this.query = function(connection) {
 
-        connection.query('SELECT * FROM product', function(err, rows, fields) {
+        connection.query('SELECT * FROM shoppingcart', function(err, rows, fields) {
             if(!err) {
                 console.log('The solution is : ', rows);
             } else {

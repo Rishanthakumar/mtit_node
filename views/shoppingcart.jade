@@ -1,0 +1,39 @@
+html
+    head
+        title="Shopping Cart"
+        link(rel='stylesheet', '')
+        link(rel='stylesheet', '')
+        script(src='')
+        script(src='')
+    body
+        div.container
+            div.content
+                h2.display-4.m-b-2 Shopping Cart Items
+                table.table.table(border='1')
+                    thead
+                        tr
+                            th Item No
+                            th Item Name
+                            th Quantity
+                            th Action
+                    tbody
+                        each item in items
+                            tr
+                                td=item.itemno
+                                td=item.itemname
+                                td=item.qty
+                                td
+                                    button.btn.btn-danger(type='submit',onClick='delete("#(item.itemno)")') Delete
+
+        script.
+            function delete1(d) {
+                var val = confirm('Do you want to delete the record?');
+
+                if(val == true) {
+                    window.location.href = '/delete/+d';
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
