@@ -1,10 +1,10 @@
 html
     head
         title="Shopping Cart"
-        link(rel='stylesheet', '')
-        link(rel='stylesheet', '')
-        script(src='')
-        script(src='')
+        link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='')
+        script(src='/bootstrap/dist/js/bootstrap.min.js')
+        script(src='https://code.jquery.com/jquery-3.2.1.min.js')
     body
         div.container
             div.content
@@ -23,14 +23,16 @@ html
                                 td=item.itemname
                                 td=item.qty
                                 td
-                                    button.btn.btn-danger(type='submit',onClick='delete("#(item.itemno)")') Delete
+                                    button.btn.btn-danger(type='button',onClick='delete1("#{item.itemno}")') Delete
 
         script.
             function delete1(d) {
+                console.log('function called');
+
                 var val = confirm('Do you want to delete the record?');
 
                 if(val == true) {
-                    window.location.href = '/delete/+d';
+                    window.location.href = '/delete/'+d;
                     return true;
                 }
                 else {
